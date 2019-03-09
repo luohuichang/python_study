@@ -1,0 +1,13 @@
+安装虚机
+virt-install --name=nginx --ram=4096 --vcpus=1 --location=/xxx-x86_64-dvd.iso \
+ --disk path=/xxxx.qcow2,size=20,format=qcow2 --accelerate --network bridge=virbr0 \
+ --noautoconsole --vnc --vncport=5922 --vnclisten=0.0.0.0 --vnc --vncport=5922 --vnclisten=0.0.0.0 
+
+镜像压缩
+qemu-img convert -c -O qcow2 xxxx.base.qcow2 xxxx_01.qcow2 
+
+克隆虚机
+virt-clone -o xxxx.base -n nginx_0309 -f /root/xxxx_01.qcow2
+
+增加网卡
+virsh attach-interface nginx_0309 bridge virbr1 增加一块网卡 
