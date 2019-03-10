@@ -1,3 +1,21 @@
+egrep -c '(vmx|svm)' /proc/cpuinfo
+
+$ yum install -y virt-install libvirt qemu-kvm
+$ systemctl start libvirtd.service
+$ systemctl enable libvirtd.service
+
+Cirros
+最小的Linux发行版, 旨在作为云计算平台的测试镜像;
+下载链接：http://download.cirros-cloud.net/
+登录帐号为cirros，登录密码为cubswin:)；
+
+CentOS
+CentOS官方维护的镜像；
+该镜像不支持密码登录，仅支持密钥登录，登录用户为centos；
+下载链接：http://cloud.centos.org/centos/7/images/
+
+mkdir -p /image/{iso,virtual}
+
 安装虚机
 virt-install --name=nginx --ram=4096 --vcpus=1 --location=/xxx-x86_64-dvd.iso \
  --disk path=/xxxx.qcow2,size=20,format=qcow2 --accelerate --network bridge=virbr0 \
@@ -11,3 +29,6 @@ virt-clone -o xxxx.base -n nginx_0309 -f /root/xxxx_01.qcow2
 
 增加网卡
 virsh attach-interface nginx_0309 bridge virbr1 增加一块网卡 
+
+详细参考
+https://www.xiaocoder.com/2017/06/29/openstack-virtual-image/
