@@ -12,7 +12,10 @@ Cirros
 CentOS
 CentOS官方维护的镜像；
 该镜像不支持密码登录，仅支持密钥登录，登录用户为centos；
-下载链接：http://cloud.centos.org/centos/7/images/
+下载链接：http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
+
+convert a raw image file named image.img to a qcow2 image file.
+$ qemu-img convert -f raw -O qcow2 image.img image.qcow2
 
 mkdir -p /image/{iso,virtual}
 
